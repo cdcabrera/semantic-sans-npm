@@ -17,8 +17,7 @@
     "commit": "git cz",
     "setup": "semantic-release-cli setup",
     "semantic-release": "semantic-release",
-    "travis-deploy-once": "travis-deploy-once",
-    "testo": "semantic-release --dry-run"
+    "travis-deploy-once": "travis-deploy-once"
   },
   "config": {
     "commitizen": {

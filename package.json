@@ -1,33 +1,49 @@
 {
-    "name": "sr",
-    "version": "0.0.0-semantically-released",
-    "description": "Semantic Releases",
-    "author": "CD Cabrera <cabrera.code@gmail.com>",
-    "license": "MIT",
-    "devDependencies": {
-        "semantic-release": "^6.3.6",
-        "semantic-release-cli": "^3.0.3",
-        "commitizen": "^2.9.6",
-        "cz-conventional-changelog": "^2.0.0",
-        "last-release-git": "^0.0.3"
-    },
-    "dependencies": {
-
-    },
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 0",
-        "setup": "echo \"This installs and runs the semantic-release-cli globally.\"; semantic-release-cli setup",
-        "commit": "git add .; git-cz",
-        "semantic-release": "semantic-release pre && semantic-release post"
-    },
-    "czConfig": {
-        "path": "node_modules/cz-conventional-changelog"
-    },
-    "release": {
-        "getLastRelease": "last-release-git"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/cdcabrera/sr.git"
+  "name": "sr",
+  "version": "0.0.0-development",
+  "description": "Semantic Releases",
+  "author": "CD Cabrera <cabrera.code@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "commitizen": "^2.9.6",
+    "cz-conventional-changelog": "^2.1.0",
+    "semantic-release-cli": "^3.6.3",
+    "semantic-release-github": "^3.1.2",
+    "travis-deploy-once": "^4.3.4",
+    "semantic-release": "^12.4.1"
+  },
+  "dependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "commit": "git cz",
+    "setup": "semantic-release-cli setup",
+    "semantic-release": "semantic-release",
+    "travis-deploy-once": "travis-deploy-once"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
     }
+  },
+  "release": {
+    "verifyConditions": [
+      "@semantic-release/github"
+    ],
+    "publish": [
+      "@semantic-release/github"
+    ],
+    "success": [
+      "@semantic-release/github"
+    ],
+    "fail": [
+      "@semantic-release/github"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cdcabrera/sr.git"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  }
 }

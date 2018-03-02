@@ -1,6 +1,6 @@
 {
   "name": "sr",
-  "version": "0.0.0-development",
+  "version": "0.0.0-semantically-released",
   "description": "Semantic Releases",
   "author": "CD Cabrera <cabrera.code@gmail.com>",
   "license": "MIT",
@@ -26,7 +26,7 @@
   },
   "release": {
     "verifyConditions": ["@semantic-release/github"],
-    "prepare": ["@semantic-release/github"],
+    "prepare": [],
     "publish": ["@semantic-release/github"]
   },
   "repository": {

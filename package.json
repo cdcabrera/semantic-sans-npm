@@ -25,21 +25,9 @@
     }
   },
   "release": {
-    "verifyConditions": [
-      "@semantic-release/github"
-    ],
-    "publish": [{
-      "path": "@semantic-release/npm",
-      "npmPublish": false
-      },
-      "@semantic-release/github"
-    ],
-    "success": [
-      "@semantic-release/github"
-    ],
-    "fail": [
-      "@semantic-release/github"
-    ]
+    "verifyConditions": ["@semantic-release/github"],
+    "prepare": [],
+    "publish": ["@semantic-release/github"]
   },
   "repository": {
     "type": "git",

@@ -20,6 +20,7 @@
       "path": "node_modules/cz-conventional-changelog"
     }
   },
+  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/cdcabrera/semantic-sans-npm.git"

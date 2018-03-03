@@ -3,11 +3,7 @@
     "src": {
         "tagName": "v%s"
     },
-    "npm": {
-        "publish": false
-    },
     "github": {
-        "release": true,
-        "tokenRef": "GH_TOKEN"
+        "release": true
     }
 }

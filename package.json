@@ -13,7 +13,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
     "commit": "git cz",
-    "release": "release-it"
+    "release": "release-it --verbose"
   },
   "config": {
     "commitizen": {

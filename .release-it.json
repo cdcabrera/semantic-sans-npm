@@ -1,7 +1,11 @@
 {
+    "requireUpstream": false,
     "increment": "conventional:angular",
     "src": {
         "tagName": "v%s"
+    },
+    "npm": {
+        "publish": false
     },
     "github": {
         "release": true

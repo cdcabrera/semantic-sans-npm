@@ -9,9 +9,11 @@ node_js:
   - '8'
 before_script:
   - npm prune
-after_success:
-  - git fetch --tags
-  - npm run travis-deploy-once "npm run semantic-release"
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
+deploy:
+  provider: script
+  script: npm run release
+  on:
+    branch: master

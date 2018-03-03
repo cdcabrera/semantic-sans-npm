@@ -9,11 +9,8 @@ node_js:
   - '8'
 before_script:
   - npm prune
+after_success:
+  - if [ "$TRAVIS_BRANCH" = "master" ]; then npm run release; fi
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
-deploy:
-  provider: script
-  script: npm run release
-  on:
-    branch: master

@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const version = require('../package').version;
 const token = process.env.GH_TOKEN;
-const { exec } = require('child_process');
+const exec = require('child_process').execSync;
 
 const getChangeLog = () => {
     let file;

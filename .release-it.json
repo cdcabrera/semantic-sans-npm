@@ -1,5 +1,4 @@
 {
-    "pkgFiles": ["package.json"],
     "requireUpstream": false,
     "increment": "conventional:angular",
     "src": {
@@ -11,9 +10,5 @@
     "github": {
         "release": true,
         "tokenRef": "GH_TOKEN"
-    },
-    "dist": {
-        "repo": "git@github.com:cdcabrera/semantic-sans-npm.git",
-        "pkgFiles": []
     }
 }

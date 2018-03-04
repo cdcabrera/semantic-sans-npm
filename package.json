@@ -1,6 +1,6 @@
 {
   "name": "sr",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Release It",
   "author": "CD Cabrera <cabrera.code@gmail.com>",
   "license": "MIT",
@@ -8,13 +8,21 @@
     "commitizen": "^2.9.6",
     "cz-conventional-changelog": "^2.1.0",
     "conventional-github-releaser": "^2.0.0",
-    "standard-version": "^4.3.0"
+    "conventional-recommended-bump": "^2.0.6",
+    "conventional-changelog": "^1.1.18",
+    "conventional-changelog-cli": "^1.3.16",
+    "standard-version": "^4.3.0",
+    "dotenv": "^5.0.1",
+    "@octokit/rest": "^14.0.9"
   },
   "dependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
     "commit": "git cz",
-    "release": "standard-version"
+    "release": "standard-version",
+    "release2": "conventional-github-releaser -p angular",
+    "release3": "conventional-changelog -p angular -o bob.txt",
+    "help": "conventional-changelog --help"
   },
   "config": {
     "commitizen": {

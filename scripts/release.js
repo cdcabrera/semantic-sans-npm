@@ -24,7 +24,7 @@ const getChangeLog = () => {
     return contents;
 };
 
-const gitHubRelease = () => {
+const gitHubRelease = (contents = '') => {
     const releasesApi = 'https://api.github.com/repos/cdcabrera/semantic-sans-npm/releases';
 
     const data = {
@@ -44,7 +44,7 @@ const gitHubRelease = () => {
 const log = getChangeLog();
 
 if (log !== '') {
-    gitHubRelease();
+    gitHubRelease(log);
 } else {
     console.log('Changelog not available, exiting.');
     process.exit();

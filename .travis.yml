@@ -14,3 +14,9 @@ after_success:
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
+deploy:
+  provider: releases
+  api_key: $GITHUB_TOKEN
+  skip_cleanup: true
+  on:
+    tags: true

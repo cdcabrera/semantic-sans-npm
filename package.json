@@ -1,6 +1,6 @@
 {
   "name": "sr",
-  "version": "0.2.1",
+  "version": "0.2.0",
   "description": "Release It",
   "author": "CD Cabrera <cabrera.code@gmail.com>",
   "license": "MIT",
@@ -26,11 +26,10 @@
   },
   "standard-version": {
     "skip": {
-      "changelog": true,
       "tag": true
     },
     "scripts": {
-      "postcommit": "echo \"post commit script\""
+      "postchangelog": "scripts/release.js"
     }
   },
   "config": {

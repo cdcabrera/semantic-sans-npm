@@ -13,6 +13,7 @@ branches:
   except:
     - /^v\d+\.\d+\.\d+$/
 before_deploy:
+  - echo $(git describe --abbrev=0 --tags)
   - if [ "$TRAVIS_BRANCH" = "master" ]; then npm run release; fi
 deploy:
   provider: releases

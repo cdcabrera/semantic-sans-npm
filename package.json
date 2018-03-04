@@ -7,13 +7,13 @@
   "devDependencies": {
     "commitizen": "^2.9.6",
     "cz-conventional-changelog": "^2.1.0",
-    "release-it": "^7.2.0"
+    "conventional-github-releaser": "^2.0.0"
   },
   "dependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
     "commit": "git cz",
-    "release": "release-it --verbose"
+    "release": "conventional-github-releaser -p angular --verbose"
   },
   "config": {
     "commitizen": {

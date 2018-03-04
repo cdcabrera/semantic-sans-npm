@@ -13,9 +13,11 @@ branches:
   except:
     - /^v\d+\.\d+\.\d+$/
 before_deploy:
-  - echo $(git describe --abbrev=0 --tags)
-  - if [ "$TRAVIS_BRANCH" = "master" ]; then npm run release; fi
+  - echo "before $(git describe --abbrev=0 --tags)"
+  - if [ "$TRAVIS_BRANCH" = "master" ]; then npm run release; TRAVIS_TAG=$(git describe --abbrev=0 --tags) fi
 deploy:
   provider: releases
   api_key: $GITHUB_TOKEN
   skip_cleanup: true
+  on:
+    tags: true

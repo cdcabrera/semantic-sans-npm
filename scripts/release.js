@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const version = require('../package').version;
 const token = process.env.GH_TOKEN;
-const exec = require('child_process').execSync;
+const { exec, execSync } = require('child_process');
 
 const getChangeLog = () => {
     let file;
@@ -38,7 +38,7 @@ const gitHubRelease = (contents = '') => {
 
     const execStr = `curl -H "Authorization: token ${token}" -H "Content-Type: application/json" -d '${JSON.stringify(data)}' ${releasesApi}`;
 
-    return exec.execSync(execStr, {stdio:'inherit'});
+    return execSync(execStr, {stdio:'inherit'});
 };
 
 const log = getChangeLog();

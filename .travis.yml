@@ -14,7 +14,7 @@ branches:
     - /^v\d+\.\d+\.\d+$/
 deploy:
   provider: script
-  script:  npm run release
+  script:  npm run release; git push --follow-tags origin master
   skip_cleanup: true
   on:
     branch: master

@@ -13,7 +13,7 @@ branches:
   except:
     - /^v\d+\.\d+\.\d+$/
 before_deploy:
-  - if [ "$TRAVIS_BRANCH" = "master" ]; then echo "release script here..."; fi
+  - if [ "$TRAVIS_BRANCH" = "master" ]; then npm run release; fi
 deploy:
   provider: releases
   api_key: $GH_TOKEN

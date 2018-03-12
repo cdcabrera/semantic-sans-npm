@@ -71,8 +71,10 @@ const gitHubReleaseUpdate = (contents = '') => {
       // name: `v${version}`,
       body: 'hello world'
     };
+
     try {
       const execStr = `curl -fs -H "Authorization: token ${token}" -H "Content-Type: application/json" -d '${JSON.stringify(data)}' ${releasesApi}`;
+      execSync(execStr);
     } catch(e) {
       console.error(`Error: ${e.message}`);
     }
@@ -82,9 +84,19 @@ const gitHubReleaseUpdate = (contents = '') => {
 
 };
 
+const gitHubPushTags = () => {
+  try {
+    const execStr = 'git push --follow-tags origin master';
+    execSync(execStr)
+  } catch(e) {
+    console.error(`Error: ${e.message}`);
+  }
+};
+
 const log = getChangeLog();
 
 if (log !== '') {
+    gitHubPushTags();
     gitHubReleaseUpdate(log);
 } else {
     console.warn('Warning: Changelog not available, exiting.');

@@ -69,7 +69,7 @@ const gitHubReleaseUpdate = (contents = '') => {
   if (package === tag || `${package}`.indexOf(tag) > -1 || `${tag}`.indexOf(package) > -1) {
     const data = {
       // name: `v${version}`,
-      body: 'hello world'
+      body: contents
     };
 
     try {

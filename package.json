@@ -20,10 +20,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
     "commit": "git cz",
-    "release": "standard-version",
-    "release2": "conventional-github-releaser -p angular",
-    "release3": "conventional-changelog -p angular -o bob.txt",
-    "help": "conventional-changelog --help"
+    "release": "standard-version"
   },
   "standard-version": {
     "skip": {

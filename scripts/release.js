@@ -3,9 +3,9 @@ require('dotenv').config();
 
 const fs = require('fs');
 const path = require('path');
-const version = require('../package').version;
+const { version } = require('../package');
 const token = process.env.GH_TOKEN;
-const { exec, execSync } = require('child_process');
+const { execSync } = require('child_process');
 
 const getChangeLog = () => {
     let file;
@@ -19,7 +19,9 @@ const getChangeLog = () => {
         contents = contents.split(`<a name="${version}"></a>`)[1];
 
         fs.unlinkSync(file);
-    } catch(e) {}
+    } catch(e) {
+      console.error(`Error: ${e.message}`);
+    }
 
     return contents;
 };
@@ -41,6 +43,55 @@ const gitHubRelease = (contents = '') => {
     return execSync(execStr, {stdio:'inherit'});
 };
 
+const gitHubLatestRelease = () => {
+  const releasesApi = 'https://api.github.com/repos/cdcabrera/semantic-sans-npm/releases/latest';
+  const packageJsonVersion = require('../package').version;
+  const execStr = `curl -fs -H "Authorization: token ${token}" -H "Content-Type: application/json" ${releasesApi}`;
+  let apiResponse = {};
+
+  try {
+    apiResponse = JSON.parse(execSync(execStr).toString());
+  } catch(e) {
+    console.error(`Error: ${e.message}`);
+  }
+
+  return {
+    package: packageJsonVersion,
+    tag: apiResponse.tag_name,
+    gitHubId: apiResponse.id
+  };
+};
+
+const gitHubReleaseUpdate = (contents = '') => {
+  const { package, tag, gitHubId } = gitHubLatestRelease();
+  const releasesApi = `https://api.github.com/repos/cdcabrera/semantic-sans-npm/releases/${gitHubId}`;
+
+  if (package === tag || `${package}`.indexOf(tag) > -1 || `${tag}`.indexOf(package) > -1) {
+    const data = {
+      // name: `v${version}`,
+      body: 'hello world'
+    };
+    try {
+      const execStr = `curl -fs -H "Authorization: token ${token}" -H "Content-Type: application/json" -d '${JSON.stringify(data)}' ${releasesApi}`;
+    } catch(e) {
+      console.error(`Error: ${e.message}`);
+    }
+  } else {
+    console.warn('Warning: package & tag mistmatch. Ignoring release notes update.');
+  }
+
+};
+
+const log = getChangeLog();
+
+if (log !== '') {
+    gitHubReleaseUpdate(log);
+} else {
+    console.warn('Warning: Changelog not available, exiting.');
+    process.exit();
+}
+
+/*
 const log = getChangeLog();
 
 if (log !== '') {
@@ -49,3 +100,4 @@ if (log !== '') {
     console.log('Changelog not available, exiting.');
     process.exit();
 }
+*/

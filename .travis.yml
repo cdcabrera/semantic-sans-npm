@@ -9,11 +9,12 @@ node_js:
   - '8'
 before_script:
   - npm prune
-script:
-  - if [ "$TRAVIS_BRANCH" = "master" ]; then npm run release; fi
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
+before-deploy:
+  - echo "before $(git describe --abbrev=0 --tags)"
+  - if [ "$TRAVIS_BRANCH" = "master" ]; then npm run release; env TRAVIS_TAG=$(git describe --abbrev=0 --tags); fi
 deploy:
   provider: releases
   api_key: $GH_TOKEN

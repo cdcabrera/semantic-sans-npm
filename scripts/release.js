@@ -96,7 +96,7 @@ const gitHubPushTags = () => {
 const log = getChangeLog();
 
 if (log !== '') {
-    gitHubPushTags();
+    // gitHubPushTags();
     gitHubReleaseUpdate(log);
 } else {
     console.warn('Warning: Changelog not available, exiting.');

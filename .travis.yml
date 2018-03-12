@@ -9,8 +9,14 @@ node_js:
   - '8'
 before_script:
   - npm prune
-after_success:
-  - if [ "$TRAVIS_BRANCH" = "master" ]; then npm run release; fi
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
+before_deploy:
+  - if [ "$TRAVIS_BRANCH" = "master" ]; then echo "release script here..."; fi
+deploy:
+  provider: releases
+  api_key: $GH_TOKEN
+  skip_cleanup: true
+  on:
+    tags: true

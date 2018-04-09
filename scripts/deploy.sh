@@ -38,13 +38,14 @@ getDeployKey
 # cd .out
 git config --global user.email $COMMIT_AUTHOR_EMAIL
 git config --global user.name $COMMIT_AUTHOR_USERNAME
+git remote add ssh-origin $SSH_REPO
 #git init
 #git add .
 #git commit -m "Deploy Storybook to GitHub Pages"
 npm run release
 git show --summary
 
-git remote add ssh-origin $SSH_REPO
 # git push --force --quiet ssh-origin master:gh-pages
 # git push --follow-tags --quiet ssh-origin $TARGET_BRANCH
-git push --follow-tags ssh-origin $TARGET_BRANCH
+# git push --follow-tags ssh-origin $TARGET_BRANCH
+git push -f ssh-origin $TARGET_BRANCH

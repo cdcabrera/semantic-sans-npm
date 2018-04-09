@@ -34,13 +34,14 @@ fi
 getDeployKey
 npm run release
 
-#npm run storybook:build
-cd .out
+# npm run storybook:build
+# cd .out
 git config --global user.email $COMMIT_AUTHOR_EMAIL
 git config --global user.name $COMMIT_AUTHOR_USERNAME
 #git init
 #git add .
 #git commit -m "Deploy Storybook to GitHub Pages"
+git show --summary
 
 git remote add ssh-origin $SSH_REPO
 # git push --force --quiet ssh-origin master:gh-pages

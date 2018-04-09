@@ -56,17 +56,17 @@ const gitHubLatestRelease = () => {
   }
 
   return {
-    package: packageJsonVersion,
+    packageJson: packageJsonVersion,
     tag: apiResponse.tag_name,
     gitHubId: apiResponse.id
   };
 };
 
 const gitHubReleaseUpdate = (contents = '') => {
-  const { package, tag, gitHubId } = gitHubLatestRelease();
+  const { packageJson, tag, gitHubId } = gitHubLatestRelease();
   const releasesApi = `https://api.github.com/repos/cdcabrera/semantic-sans-npm/releases/${gitHubId}`;
 
-  if (package === tag || `${package}`.indexOf(tag) > -1 || `${tag}`.indexOf(package) > -1) {
+  if (packageJson === tag || `${packageJson}`.indexOf(tag) > -1 || `${tag}`.indexOf(packageJson) > -1) {
     const data = {
       // name: `v${version}`,
       body: contents

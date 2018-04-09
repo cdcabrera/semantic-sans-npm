@@ -18,7 +18,6 @@
   },
   "standard-version": {
     "scripts": {
-      "posttag": "scripts/release.js"
     }
   },
   "config": {

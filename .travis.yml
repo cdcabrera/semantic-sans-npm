@@ -2,6 +2,14 @@ language: node_js
 cache:
   directories:
     - node_modules
+env:
+  global:
+  - ENCRYPTION_LABEL: "a89191c56639"
+  - COMMIT_AUTHOR_EMAIL: "cabrera.build@gmail.com"
+  - COMMIT_AUTHOR_USERNAME: "cdcabrera-build"
+  - TRIGGER_REPO_SLUG: "cdcabrera/semantic-sans-npm"
+  - TRIGGER_REPO_BRANCH: "master"
+  - TARGET_BRANCH: "master"
 notifications:
   email: false
 node_js:
@@ -14,7 +22,7 @@ branches:
     - /^v\d+\.\d+\.\d+$/
 deploy:
   provider: script
-  script:  npm run release; git push --follow-tags origin master
+  script: bash scripts/deploy.sh
   skip_cleanup: true
   on:
     branch: master

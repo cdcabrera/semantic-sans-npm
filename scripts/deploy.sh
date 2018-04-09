@@ -32,7 +32,7 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_BRANCH" != "$TRIGGER_REPO_BRA
 fi
 
 getDeployKey
-npm run release
+# npm run release
 
 # npm run storybook:build
 # cd .out
@@ -41,8 +41,10 @@ git config --global user.name $COMMIT_AUTHOR_USERNAME
 #git init
 #git add .
 #git commit -m "Deploy Storybook to GitHub Pages"
+npm run release
 git show --summary
 
 git remote add ssh-origin $SSH_REPO
 # git push --force --quiet ssh-origin master:gh-pages
-git push --follow-tags --quiet ssh-origin $TARGET_BRANCH
+# git push --follow-tags --quiet ssh-origin $TARGET_BRANCH
+git push --follow-tags ssh-origin $TARGET_BRANCH

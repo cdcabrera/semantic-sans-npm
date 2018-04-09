@@ -53,4 +53,4 @@ git show --summary
 # git push --follow-tags ssh-origin $TARGET_BRANCH
 # git push -f ssh-origin $TARGET_BRANCH
 # git push --force ssh-origin master:$TARGET_BRANCH
-git push --force --follow-tags ssh-origin master
+git push --force --follow-tags ssh-origin master:master

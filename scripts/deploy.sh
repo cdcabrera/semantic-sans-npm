@@ -39,9 +39,9 @@ getDeployKey
 git config --global user.email $COMMIT_AUTHOR_EMAIL
 git config --global user.name $COMMIT_AUTHOR_USERNAME
 git remote add ssh-origin $SSH_REPO
-#git init
-#git add .
-#git commit -m "Deploy Storybook to GitHub Pages"
+# git init
+# git add .
+# git commit -m "test"
 echo "before"
 git show --summary
 echo "after"
@@ -53,4 +53,5 @@ git show --summary
 # git push --follow-tags ssh-origin $TARGET_BRANCH
 # git push -f ssh-origin $TARGET_BRANCH
 # git push --force ssh-origin master:$TARGET_BRANCH
-git push --force --follow-tags ssh-origin master:master
+echo "before"
+git push --follow-tags ssh-origin $TARGET_BRANCH

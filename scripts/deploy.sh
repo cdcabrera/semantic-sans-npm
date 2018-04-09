@@ -42,10 +42,15 @@ git remote add ssh-origin $SSH_REPO
 #git init
 #git add .
 #git commit -m "Deploy Storybook to GitHub Pages"
+echo "before"
+git show --summary
+echo "after"
 npm run release
 git show --summary
 
 # git push --force --quiet ssh-origin master:gh-pages
 # git push --follow-tags --quiet ssh-origin $TARGET_BRANCH
 # git push --follow-tags ssh-origin $TARGET_BRANCH
-git push -f ssh-origin $TARGET_BRANCH
+# git push -f ssh-origin $TARGET_BRANCH
+# git push --force ssh-origin master:$TARGET_BRANCH
+git push --force --follow-tags ssh-origin master
